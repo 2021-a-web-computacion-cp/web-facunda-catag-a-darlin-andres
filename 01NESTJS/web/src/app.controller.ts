@@ -1,4 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
+import { BadRequestException, Controller, Get, InternalServerErrorException } from '@nestjs/common';
+import path from 'path/posix';
 import { AppService } from './app.service';
 
 @Controller()
@@ -9,4 +10,6 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  
 }
