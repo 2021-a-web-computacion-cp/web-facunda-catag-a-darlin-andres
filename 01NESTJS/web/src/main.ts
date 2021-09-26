@@ -3,10 +3,12 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  await app.listen(3000); // npm run start 
 }
 bootstrap();
 
+
+/*clase
 abstract class Nombre {
   public nombrePropiedad?: string;//undefined
   private apellidoPropiedad: string='Eguez';
@@ -35,7 +37,7 @@ abstract class Nombre {
     return 'string';
   }
 
-}
+}*/
 
 /* // packege json...
 // Variables Primitivas 
