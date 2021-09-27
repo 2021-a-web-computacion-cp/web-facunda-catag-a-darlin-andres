@@ -1,4 +1,4 @@
-import { Controller, Get, HttpCode, BadRequestException, InternalServerErrorException, Req, Res } from '@nestjs/common';
+import { Controller, Get, HttpCode,Headers, BadRequestException, InternalServerErrorException, Req, Res, Header, Query, Param, Post, Body } from '@nestjs/common';
 import path from 'path/posix';
 import { AppService } from './app.service';
 
@@ -46,10 +46,11 @@ export class AppController {
       'Tengo hambre', // valor
     );
     res.cookie(
-      'galletaSegura', //nombre
+      'galletaSeguraYFrimada', //nombre
       'Web:3', // valor
       {
-        secure: true,
+        secure: true, // solo se transfiera por canales confiables https
+        signed: true, //Encriptacion
       },
     );
 
@@ -63,6 +64,34 @@ export class AppController {
       sinFirmar:req.cookies,
       firmar: req.signedCookies,
     };
+    // req.signedCookies.total  //si esta existe
     return mensaje;
   }
+
+  @Get('parametros-consulta/:nombre/:apellido')
+  @HttpCode(200)
+  @Header('Cache-Control', 'none') // Cabecera de respuesta (response headers)
+  @Header('EPN', 'SISTEMAS') // Cabecera de respuesta (response headers)
+  parametrosConsulta(
+    @Query() queryParams,
+    @Param() params,
+  ){
+    return{
+      parametrosConsulta: queryParams,
+      parametrosRuta: params,
+    };
+  }
+
+  @Post('parametros-cuerpo')// 201
+  @HttpCode(200)
+  parametrosCuerpo(
+    @Body() bodyParams,
+    @Headers() cabecerasPeticion,
+  ){
+    return{
+      parametrosCuerpo: bodyParams,
+      cabeceras: cabecerasPeticion,
+    };
+  }
+
 }
