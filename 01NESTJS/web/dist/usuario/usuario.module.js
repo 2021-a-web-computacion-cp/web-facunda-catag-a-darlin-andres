@@ -6,30 +6,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.UsuarioModulo = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const Prisma_service_1 = require("./Prisma.service");
-const usuario_module_1 = require("./usuario/usuario.module");
-let AppModule = class AppModule {
+const Prisma_service_1 = require("../Prisma.service");
+const usuario_controller_1 = require("./usuario.controller");
+const usuario_service_1 = require("./usuario.service");
+let UsuarioModulo = class UsuarioModulo {
 };
-AppModule = __decorate([
+UsuarioModulo = __decorate([
     (0, common_1.Module)({
-        imports: [
-            usuario_module_1.UsuarioModulo,
-        ],
-        controllers: [
-            app_controller_1.AppController,
-        ],
+        imports: [],
         providers: [
-            app_service_1.AppService,
+            usuario_service_1.UsuarioService,
             Prisma_service_1.PrismaService,
         ],
         exports: [
-            app_service_1.AppService,
-        ]
+            usuario_service_1.UsuarioService,
+        ],
+        controllers: [
+            usuario_controller_1.UsuarioController,
+        ],
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], UsuarioModulo);
+exports.UsuarioModulo = UsuarioModulo;
+//# sourceMappingURL=usuario.module.js.map
