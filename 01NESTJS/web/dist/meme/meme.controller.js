@@ -91,8 +91,6 @@ let MemeController = class MemeController {
     async obtenerUno(response, parametrosRuta) {
         try {
             const respuesta = await this.memeService.buscarUno(+parametrosRuta.idMeme);
-            console.log("-----------------------------");
-            console.log(respuesta);
             response.render('meme/actualizar', {
                 datos: {
                     MEME: respuesta,

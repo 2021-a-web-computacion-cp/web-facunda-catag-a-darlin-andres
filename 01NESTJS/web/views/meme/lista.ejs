@@ -6,9 +6,15 @@
     <!--  !== ! = =      -->
     <% const existeMensaje = typeof datos.mensaje !== 'undefined'%>
     <% if(existeMensaje){%>
-        <div class="alert alert-danger" role="alert">
-            <%= datos.mensaje%>
-        </div>
+        <%if(datos.mensaje ==' Se actualizo el meme '){%>
+            <div class="alert alert-success" role="alert">
+                <%= datos.mensaje%>
+            </div>
+        <%}else{%>
+            <div class="alert alert-danger" role="alert">
+                <%= datos.mensaje%>
+            </div>
+            <%}%>
     <%}%>
 
     <h1>Lista</h1>
