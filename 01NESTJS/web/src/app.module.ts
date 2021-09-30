@@ -3,12 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaService } from './Prisma.service';
 import { UsuarioModulo } from './usuario/usuario.module';
+import { MemeModulo } from './meme/meme.module';
 
 
 //Descorador -> Funciones 
 @Module({
   imports: [ // Modulos importados
     UsuarioModulo,
+    MemeModulo,
   ],
   controllers: [//Controladores de este modulo
     AppController,

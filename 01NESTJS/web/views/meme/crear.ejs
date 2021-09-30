@@ -1,0 +1,71 @@
+<%- include('../comunes/cabecera') %>
+
+
+
+
+    <div class='container'>
+        <!--  !== ! = =      -->
+        
+        <div class="container">
+            <%const existeMensaje = typeof  datos.mensaje !=  'undefined'%>
+            <%if(existeMensaje){%>
+                <%if(datos.mensaje ==' Datos erroneos, por favor revicelos y intentelo de nuevo'){%>
+                <div class="alert alert-danger" role="alert">
+                    <%= datos.mensaje%>
+                </div>
+            <%}else{%>
+                <div class="alert alert-success" role="alert">
+                    <%= datos.mensaje%>
+                </div>
+                <%}%>
+            <%}%>
+        </div>
+        <h1>Crear meme</h1>
+        <form action='/meme/crear-meme-formulario' method='post'>
+            
+            <div class="mb-3">
+                <label for="titulo" class="form-label"> Titulo* </label>
+                <input placeholder="Ej: Dejame reir mas fuerte"
+                       type="text"
+                       name="titulo"
+                       class="form-control"
+                       id="titulo"
+                       aria-describedby="ayudatitulo">
+                <div id="ayudatitulo" class="form-text"> Ingrese el Titulo. </div>
+            </div>
+            <div class="mb-3">
+                <label for="autor" class="form-label"> Autor(Opcional) </label>
+                <input placeholder="Ej: Maria Juana"
+                       type="text"
+                       name="autor"
+                       class="form-control"
+                       id="autor"
+                       aria-describedby="ayudaautor">
+                <div id="ayudaautor" class="form-text"> Ingrese el Autor. </div>
+            </div>
+            <div class="mb-3">
+                <label for="porcentajeReplica" class="form-label"> Porcentaje de replica </label>
+                <input placeholder="Ej: 20.4"
+                       type="text"
+                       name="porcentajeReplica"
+                       class="form-control"
+                       id="porcentajeReplica"
+                       aria-describedby="ayudaporcentajeReplica">
+                <div id="ayudaPorcentajeReplica" class="form-text"> Ingrese el porcentaje de replica. </div>
+            </div>
+    
+    
+            
+    
+            <div class="mb-3">
+                <label><input type="checkbox" id="longevidad" name="longevidad"> Longevidad*</label>
+                <div id="ayudaLongevidad" class="form-text">¿Tiene longevidad?</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Crear</button>
+        </form>
+    </div>
+
+
+
+<%- include('../comunes/footer') %>

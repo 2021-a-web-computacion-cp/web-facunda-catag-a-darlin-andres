@@ -6,32 +6,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.MemeModulo = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const Prisma_service_1 = require("./Prisma.service");
-const usuario_module_1 = require("./usuario/usuario.module");
-const meme_module_1 = require("./meme/meme.module");
-let AppModule = class AppModule {
+const Prisma_service_1 = require("../Prisma.service");
+const meme_controller_1 = require("./meme.controller");
+const meme_service_1 = require("./meme.service");
+let MemeModulo = class MemeModulo {
 };
-AppModule = __decorate([
+MemeModulo = __decorate([
     (0, common_1.Module)({
-        imports: [
-            usuario_module_1.UsuarioModulo,
-            meme_module_1.MemeModulo,
-        ],
-        controllers: [
-            app_controller_1.AppController,
-        ],
+        imports: [],
         providers: [
-            app_service_1.AppService,
+            meme_service_1.MemeService,
             Prisma_service_1.PrismaService,
         ],
         exports: [
-            app_service_1.AppService,
-        ]
+            meme_service_1.MemeService,
+        ],
+        controllers: [
+            meme_controller_1.MemeController,
+        ],
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], MemeModulo);
+exports.MemeModulo = MemeModulo;
+//# sourceMappingURL=meme.module.js.map

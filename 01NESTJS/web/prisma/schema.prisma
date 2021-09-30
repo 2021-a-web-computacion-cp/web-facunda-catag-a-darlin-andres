@@ -25,3 +25,14 @@ model Mascota{
   usuarioId Int
   
 }
+
+
+model MEME {
+  id                  Int @id @default(autoincrement())
+  fechaCreacion       DateTime  @default(now())
+  titulo              String
+  autor               String?
+  porcentajeReplica   Float
+  longevidad          Boolean
+  
+}

@@ -3,7 +3,7 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/Prisma.service";
 
 @Injectable()
-export class UsuarioService {
+export class MemeService {
     constructor(// Inyectar dependencias
         private prisma: PrismaService) {
         
@@ -17,11 +17,11 @@ export class UsuarioService {
         }) { 
             const or = parametrosBusqueda.busqueda ? { 
                 OR: [ 
-                    { nombre: { contains: parametrosBusqueda.busqueda } }, 
-                    { apellido: { contains: parametrosBusqueda.busqueda } }, 
+                    { titulo: { contains: parametrosBusqueda.busqueda } }, 
+                    { autor: { contains: parametrosBusqueda.busqueda } }, 
                 ], 
             } : {}; 
-            return this.prisma.ePN_USUARIO.findMany({ 
+            return this.prisma.mEME.findMany({ 
                 where: or, 
                 take: Number(parametrosBusqueda.take) || undefined, 
                 skip: Number(parametrosBusqueda.skip) || undefined, 
@@ -29,22 +29,22 @@ export class UsuarioService {
         }
 
     buscarUno(id: number){
-        return this.prisma.ePN_USUARIO.findUnique({
+        return this.prisma.mEME.findUnique({
             where: {
                 id: id,
             },
         });
     }
-    crearUno(usuario: Prisma.EPN_USUARIOCreateInput){
-        return this.prisma.ePN_USUARIO.create({
-            data:usuario,
+    crearUno(meme: Prisma.MEMECreateInput){
+        return this.prisma.mEME.create({
+            data:meme,
         });
     }
     actualizarUno(parametrosActualizar: {
         id: number;
-        data: Prisma.EPN_USUARIOUpdateInput;
+        data: Prisma.MEMEUpdateInput;
         }) {
-        return this.prisma.ePN_USUARIO.update({
+        return this.prisma.mEME.update({
         data: parametrosActualizar.data,
         where: {
         id: parametrosActualizar.id,
@@ -52,7 +52,7 @@ export class UsuarioService {
         });
     }
     eliminarUno(id: number) {
-        return this.prisma.ePN_USUARIO.delete({
+        return this.prisma.mEME.delete({
         where: { id: id },
         });
     }

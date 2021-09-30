@@ -1,0 +1,58 @@
+<%- include('../comunes/cabecera') %>
+<div class="container">
+    <h1>Actualizar Meme</h1>
+
+    <form action="/meme/actualizar-meme-formulario/<%=datos.MEME.id%>" method="post">
+
+        <div class="mb-3">
+            <label for="titulo" class="form-label"> Titulo </label>
+            <input placeholder="Ej: Dejame reir mas fuerte"
+                   type="text"
+                   name="titulo"
+                   class="form-control"
+                   id="titulo"
+                   value="<%=datos.MEME.titulo%>"
+                   aria-describedby="ayudaTitulo">
+            <div id="ayudaTitulo" class="form-text"> Ingrese el Titulo. </div>
+        </div>
+        <div class="mb-3">
+            <label for="autor" class="form-label"> Autor(Opcional) </label>
+            <input placeholder="Ej: Maria Juana"
+                   type="text"
+                   name="autor"
+                   class="form-control"
+                   id="autor"
+                   value="<%=datos.MEME.autor%>"
+                   aria-describedby="ayudaautor">
+            <div id="ayudaautor" class="form-text"> Ingrese el Autor. </div>
+        </div>
+        <div class="mb-3">
+            <label for="porcentajeReplica" class="form-label"> Porcentaje de replica </label>
+            <input placeholder="Ej: 20.4"
+                   type="text"
+                   name="porcentajeReplica"
+                   class="form-control"
+                   id="porcentajeReplica"
+                   value="<%=datos.MEME.porcentajeReplica%>"
+                   aria-describedby="ayudaporcentajeReplica">
+            <div id="ayudaPorcentajeReplica" class="form-text"> Ingrese el porcentaje de replica. </div>
+        </div>
+
+
+        
+
+
+        <div class="mb-3">
+
+            <%if(datos.MEME.longevidad == true){%>
+                <label><input type="checkbox" id="cartelera" name="cartelera" checked="checked"> longevidad</label>
+                <div id="ayudaCartelera" class="form-text">¿Tiene longevidad?</div>
+            <%}else{%>
+                <label><input type="checkbox" id="longevidad" name="longevidad"> Longevidad</label>
+                <div id="ayudaLongevidad" class="form-text">¿Tiene longevidad?</div>
+            <%}%>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Actualizar</button>
+    </form>
+</div>
+<%- include('../comunes/footer') %>
